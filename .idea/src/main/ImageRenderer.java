@@ -3,8 +3,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 public class ImageRenderer {
     private int[][] imagePixels;
-    public ImageRenderer(int[][] imagePixels){
+    public ImageRenderer(int[][] imagePixels) throws IOException {
         this.imagePixels = imagePixels;
+        renderImage();
     }
 
     public void renderImage() throws IOException{
@@ -27,8 +28,8 @@ public class ImageRenderer {
                         int ir = (int)(255.999 * r);
                         int ig = (int)(255.999 * g);
                         int ib = (int)(255.999 * b);
-
-                        fileWriter.write(ir+' '+ig+' '+ib+'\n');
+                        System.out.println(ib);
+                        fileWriter.write(""+ir+" "+ig+" "+ib+"\n");
                     }
                 }
 

@@ -1,16 +1,11 @@
 import java.io.IOException;
 
-public static void main(java.lang.String[] args) {
-    int[][] image = new int[256][256];
-    for(int[] i:image){
-        for(int j:i){
-            j=0;
-        }
-    }
+public static void main(java.lang.String[] args) throws IOException{
+    vec3[][] image = new vec3[256][256];
     try{
-        ImageRenderer imageRenderer = new ImageRenderer(image);
+        ImageRenderer imageRenderer = new ImageRenderer();
     }
     catch(IOException e){
-
+        System.out.println("IMAGE DISPLAY ERROR");
     }
 }

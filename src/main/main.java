@@ -9,25 +9,25 @@ public static void main(java.lang.String[] args) throws IOException{
     double focal = 1;
     double viewHeight = 2;
     double viewWidth = viewHeight * ((double)(imageWidth)/imageHeight);
-    Tri cameraCenter = new Tri(0,0,0);
+    Thr cameraCenter = new Thr(0,0,0);
 
-    Tri viewU = new Tri(viewWidth, 0, 0);
-    Tri viewV = new Tri(0, -viewHeight, 0);
+    Thr viewU = new Thr(viewWidth, 0, 0);
+    Thr viewV = new Thr(0, -viewHeight, 0);
 
-    Tri pixeldU = viewU.div(imageWidth);
-    Tri pixeldV = viewV.div(imageHeight);
+    Thr pixeldU = viewU.div(imageWidth);
+    Thr pixeldV = viewV.div(imageHeight);
 
-    Tri viewUpperLeft = cameraCenter.minus(new Tri(0,0,focal))
+    Thr viewUpperLeft = cameraCenter.minus(new Thr(0,0,focal))
             .minus(viewU.div(2)).minus(viewV.div(2));
 
-    Tri pixelOrigin = viewUpperLeft.add((pixeldV.add(pixeldU).mult(0.5)));
+    Thr pixelOrigin = viewUpperLeft.add((pixeldV.add(pixeldU).mult(0.5)));
     Color[][] image = new Color[(int)imageHeight][imageWidth];
 
     for(int i = 0; i<imageHeight; i++){
         System.out.println("Line "+i+" Printed!");
         for(int j = 0; j<imageWidth; j++){
-            Tri pixelCenter = pixelOrigin.add(pixeldU.mult(j).add(pixeldV.mult(i)));
-            Tri rayDir = pixelCenter.minus(cameraCenter);
+            Thr pixelCenter = pixelOrigin.add(pixeldU.mult(j).add(pixeldV.mult(i)));
+            Thr rayDir = pixelCenter.minus(cameraCenter);
 
             Ray r = new Ray(cameraCenter, rayDir);
 

@@ -1,15 +1,15 @@
 public class Ray {
-    private Tri origin, dir;
+    private Thr origin, dir;
     public Ray(){}
-    public Ray(Tri origin, Tri dir){
+    public Ray(Thr origin, Thr dir){
         this.origin = origin;
         this.dir = dir;
     }
-    public Tri at(double t){
+    public Thr at(double t){
         return origin.add(dir.mult(t));
     }
     public Color rayColor(){
-        Tri unitDirection = dir.div(dir.length());
+        Thr unitDirection = dir.div(dir.length());
         double a = 0.5*(unitDirection.y+1);
         System.out.println(a);
         Color w = new Color(1.0, 1.0, 1.0);

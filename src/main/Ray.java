@@ -16,6 +16,17 @@ public class Ray {
         Color b = new Color(0.5, 0.7, 1.0);
         Color c = w.mult(1-a).add(b.mult(a));
         //System.out.println("R: "+c.x+" G: "+c.y+" B: "+c.z);
+        if(this.hitsSphere(new Thr(0,0,1), 0.5)){
+            return new Color(0,0,1);
+        }
         return c;
+    }
+    public boolean hitsSphere(Thr center, double radius){
+        Thr oc = center.minus(origin);
+        double a = dir.dot(dir);
+        double b = (dir.dot(oc))*(-2);
+        double c = oc.dot(oc)-radius*radius;
+        double discriminant = b*b-4*a*c;
+        return (discriminant>=0);
     }
 }

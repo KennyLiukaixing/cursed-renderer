@@ -3,9 +3,9 @@ public class Color extends Thr {
         super(x, y, z);
     }
     public String writeColor() {
-        int rbyte = (int)(x*255.999);
-        int gbyte = (int)(y*255.999);
-        int bbyte = (int)(z*255.999);
+        int rbyte = (int)(x);
+        int gbyte = (int)(y);
+        int bbyte = (int)(z);
         return "" + rbyte + " " + gbyte + " " + bbyte + "\n";
     }
     public Color add (Color v) {return new Color (x+v.x, y+v.y, z+v.z);}

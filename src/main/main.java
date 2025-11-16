@@ -5,34 +5,21 @@ public static void main(java.lang.String[] args) throws IOException{
     int imageWidth = 400;
     double imageHeightF = ((double)imageWidth)/aspectRatio;
     int imageHeight = (int)imageHeightF;
-    System.out.println(imageHeight);
-    double focal = 1;
-    double viewHeight = 2;
-    double viewWidth = viewHeight * ((double)(imageWidth)/imageHeight);
-    Thr cameraCenter = new Thr(0,0,0);
 
-    Thr viewU = new Thr(viewWidth, 0, 0);
-    Thr viewV = new Thr(0, -viewHeight, 0);
-
-    Thr pixeldU = viewU.div(imageWidth);
-    Thr pixeldV = viewV.div(imageHeight);
-
-    Thr viewUpperLeft = cameraCenter.minus(new Thr(0,0,focal))
-            .minus(viewU.div(2)).minus(viewV.div(2));
-
-    Thr pixelOrigin = viewUpperLeft.add((pixeldV.add(pixeldU).mult(0.5)));
     Color[][] image = new Color[(int)imageHeight][imageWidth];
 
     for(int i = 0; i<imageHeight; i++){
         System.out.println("Line "+i+" Printed!");
         for(int j = 0; j<imageWidth; j++){
-            Thr pixelCenter = pixelOrigin.add(pixeldU.mult(j).add(pixeldV.mult(i)));
-            Thr rayDir = pixelCenter.minus(cameraCenter);
-
-            Ray r = new Ray(cameraCenter, rayDir);
-
-            Color pixelcolor = r.rayColor();
-            image[i][j] = pixelcolor;
+            //grid of 225:400
+            double x = j - imageWidth/2;
+            double y = i - imageHeight/2;
+            double diffy = -2*x*y;
+            diffy*=0.1;
+            if(diffy > 255.99) diffy = 255.99;
+            if(diffy < -255.99) diffy = -255.99;
+            Color c = new Color(diffy, 0, -diffy);
+            image[i][j] = c;
         }
     }
     try{
@@ -44,3 +31,4 @@ public static void main(java.lang.String[] args) throws IOException{
         System.out.println("IMAGE DISPLAY ERROR");
     }
 }
+

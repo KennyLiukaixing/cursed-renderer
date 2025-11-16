@@ -1,6 +1,6 @@
 # Welcome to Cursed Renderer!
 This is my current side project of choice. As an aspiring computer graphics programmer and passionate 3D artist, I believed that it would be fun to create my very own ray-tracing engine. 
-Aside from this purpose that has been eloquently expressed by myself a year ago, it has been hijacked and will continue to be for a variety of other personal projects.
+Aside from this purpose that has been eloquently expressed by myself some time ago, it has been hijacked and will continue to be for a variety of other personal projects.
 ## What does it do?
 Cursed-Renderer seeks to provide a direct, bloatless pipeline to the world of 3D graphics via Java multithreading. This offers many unique challenges and opportunities as this deviates away from traditional graphics programming conventions.
 This choice is also because people have already made much better C++ implementations of the same thing and I need to win a bet that I can make a ray-tracer in Java.

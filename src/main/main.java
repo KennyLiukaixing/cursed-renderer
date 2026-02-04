@@ -1,34 +1,46 @@
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public static void main(java.lang.String[] args) throws IOException{
-    double aspectRatio = 1.7778;
-    int imageWidth = 400;
-    double imageHeightF = ((double)imageWidth)/aspectRatio;
-    int imageHeight = (int)imageHeightF;
-
-    Color[][] image = new Color[(int)imageHeight][imageWidth];
-
-    for(int i = 0; i<imageHeight; i++){
-        System.out.println("Line "+i+" Printed!");
-        for(int j = 0; j<imageWidth; j++){
-            //grid of 225:400
-            double x = j - imageWidth/2;
-            double y = i - imageHeight/2;
-            double diffy = -2*x*y;
-            diffy*=0.1;
-            if(diffy > 255.99) diffy = 255.99;
-            if(diffy < -255.99) diffy = -255.99;
-            Color c = new Color(diffy, 0, -diffy);
-            image[i][j] = c;
+    Scanner sc = new Scanner(new File("alienimage.txt"));
+    for(int i = 0; i<4; i++) sc.next();
+    Color[][] colors = new Color[90][90];
+    for (int i = 0; i < 90; i += 1) {
+        for (int j = 0; j < 90; j += 1) {
+            int R = Integer.parseInt(sc.next());
+            int G = Integer.parseInt(sc.next());
+            int B = Integer.parseInt(sc.next());
+            int M = (R + G + B) / 3;
+            System.out.print(M);
+            Color c = new Color(M, M, M);
+            colors[i][j] = c;
         }
     }
-    try{
-        ImageRenderer imageRenderer = new ImageRenderer();
-        imageRenderer.renderImage(image);
-        System.out.println("ver0.0.7");
+    char[][] letters = new char[90][90];
+    int[] letterCounts = new int[100];
+    for (int i = 0; i < 90; i++) {
+        for (int j = 0; j < 90; j++) {
+            letters[i][j] = colors[i][j].toLetter();
+            int cnt = letters[i][j];
+            //System.out.println(cnt);
+            letterCounts[cnt] += 1;
+            System.out.print(letters[i][j] + " ");
+        }
+        System.out.println();
     }
-    catch(IOException e){
-        System.out.println("IMAGE DISPLAY ERROR");
+
+    for(int i = 69; i<95; i++){
+        System.out.print((char)i+": "+letterCounts[i]+" ");
     }
+    System.out.println();
 }
+
 

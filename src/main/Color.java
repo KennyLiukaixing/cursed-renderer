@@ -1,6 +1,6 @@
 public class Color extends Thr {
     private static final double[] BRIGHTNESS_VALUES = {
-            0, 63.370439794200074, 63.57422718098488,
+            5, 63.370439794200074, 63.57422718098488,
             63.72198543223025, 66.07372162571014, 79.08140606588547,
             83.22359543133581, 84.70068211073213, 88.05895941168913,
             89.67240018199985, 90.42209976550008, 102.54868886183951,
@@ -11,9 +11,9 @@ public class Color extends Thr {
     };
 
     private static final char[] CHARACTERS = {
-            ' ', '#', '%', 'M', 'B', 'W', 'D', 'O', 'R', 'G',
-            'H', 'S', 'U', 'K', 'P', 'E', 'E', 'A', '[',
-            'F', 'L', '_', '-', '.', ' '
+            'P', '#', '%', 'M', 'B', 'D', 'O', 'R', 'G',
+            'H', 'S', 'U', 'U', 'P', 'E', 'E', 'A', '[',
+            'A', 'L', '_', '-', '.', ' '
     };
     public Color(double x, double y, double z){
         super(x, y, z);
